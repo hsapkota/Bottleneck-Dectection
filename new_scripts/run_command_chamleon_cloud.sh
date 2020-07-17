@@ -27,17 +27,17 @@ sleep 10;
 
 #packet loss
 
-tc qdisc add dev eno1 root netem loss .001%;
+tc qdisc add dev eno1 root netem loss 0.001%;
 sleep 10;
 python2 main_program.py 5;
 tc qdisc del dev eno1 root;
 
-tc qdisc add dev eno1 root netem loss .005%;
+tc qdisc add dev eno1 root netem loss 0.005%;
 sleep 10;
 python2 main_program.py 6;
 tc qdisc del dev eno1 root;
 
-tc qdisc add dev eno1 root netem loss .01%;
+tc qdisc add dev eno1 root netem loss 0.01%;
 sleep 10;
 python2 main_program.py 7;
 tc qdisc del dev eno1 root;
@@ -60,17 +60,17 @@ tc qdisc del dev eno1 root;
 
 #packet duplicate
 
-tc qdisc add dev eno1 root netem duplicate .001%;
+tc qdisc add dev eno1 root netem duplicate 0.001%;
 sleep 10;
 python2 main_program.py 11;
 tc qdisc del dev eno1 root;
 
-tc qdisc add dev eno1 root netem duplicate .005%;
+tc qdisc add dev eno1 root netem duplicate 0.005%;
 sleep 10;
 python2 main_program.py 12;
 tc qdisc del dev eno1 root;
 
-tc qdisc add dev eno1 root netem duplicate .01%;
+tc qdisc add dev eno1 root netem duplicate 0.01%;
 sleep 10;
 python2 main_program.py 13;
 tc qdisc del dev eno1 root;
@@ -82,12 +82,12 @@ sleep 10;
 python2 main_program.py 14;
 tc qdisc del dev eno1 root;
 
-tc qdisc add dev eno1 root netem corrupt .005%;
+tc qdisc add dev eno1 root netem corrupt 0.005%;
 sleep 10;
 python2 main_program.py 15;
 tc qdisc del dev eno1 root;
 
-tc qdisc add dev eno1 root netem corrupt .01%;
+tc qdisc add dev eno1 root netem corrupt 0.01%;
 sleep 10;
 python2 main_program.py 16;
 tc qdisc del dev eno1 root;
@@ -99,12 +99,12 @@ sleep 10;
 python2 main_program.py 17;
 tc qdisc del dev eno1 root;
 
-tc qdisc add dev eno1 root netem reorder .005%;
+tc qdisc add dev eno1 root netem reorder 0.005%;
 sleep 10;
 python2 main_program.py 18;
 tc qdisc del dev eno1 root;
 
-tc qdisc add dev eno1 root netem reorder .01%;
+tc qdisc add dev eno1 root netem reorder 0.01%;
 sleep 10;
 python2 main_program.py 19;
 tc qdisc del dev eno1 root;
