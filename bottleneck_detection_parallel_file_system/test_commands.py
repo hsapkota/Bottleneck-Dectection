@@ -412,7 +412,7 @@ class fileWriteThread(threading.Thread):
                         "avg_send_value,avg_unacked_value ,avg_rcv_space,"+\
                         "send_buffer_value,tps,rkB,wkB,areq_sz,aqu_sz,await_time,svctm,util,label_value\n"
         
-        output_file = open("dataset_"+str(self.label_value)+".csv","a+")
+        output_file = open("./logs/dataset_"+str(self.label_value)+".csv","a+")
         output_file.write(str(self.metric_string))
         output_file.flush()
         output_file.close()
