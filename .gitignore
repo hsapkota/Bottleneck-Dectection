@@ -3,6 +3,7 @@
 *.pyc
 .Rhistory
 **/__pycache__/
+**/logs/
 **/file_transfer_stat.txt
 **/throughput.txt
 **/files/
