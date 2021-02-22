@@ -2,7 +2,6 @@
 *.class
 *.pyc
 .Rhistory
-**/logs
 **/__pycache__/
 **/file_transfer_stat.txt
 **/throughput.txt
