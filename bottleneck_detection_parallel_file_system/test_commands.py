@@ -7,16 +7,14 @@ import os.path
 from subprocess import check_output
 
 src_ip = ""
-dst_ip = "172.31.25.111"
+dst_ip = "134.197.113.71"
 port_number = "50505"
 time_length = 3600  #one hour data
-drive_name = "xvdf"
+drive_name = "nvme0n1"#"xvdf"
 
 
-# src_path="/data/masud/STransfer1/to/"
-# dst_path = "/data/masud/STransfer/received_files/"
-src_path="/data/to/"
-dst_path = "/home/cc/received_files/"
+src_path="/data/hem/"
+dst_path = "/data/hem/"
 start_time_global = time.time()
 ##normal = 0
 ## HIGH memory = 1
@@ -39,7 +37,7 @@ class fileTransferThread(threading.Thread):
 
 def transfer_file(i):
     global pid,label_value
-    output_file = open("file_transfer_stat.txt","a+")
+    output_file = open("./logs/file_transfer_stat.txt","a+")
     if label_value==29:
         comm_ss = ['java', 'SimpleSender2', dst_ip, port_number, src_path, str(label_value)]
     else:

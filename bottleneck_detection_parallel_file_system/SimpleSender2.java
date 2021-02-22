@@ -200,7 +200,7 @@ public class SimpleSender2 {
         @Override
         public void run() {
             try {
-                BufferedWriter out = new BufferedWriter(new FileWriter("throughput.txt", true)); 
+                BufferedWriter out = new BufferedWriter(new FileWriter("./logs/throughput.txt", true)); 
                 out.write(this.output); 
                 out.close(); 
             } catch (Exception e) {
