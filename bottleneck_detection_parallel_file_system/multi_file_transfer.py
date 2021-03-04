@@ -86,7 +86,7 @@ def collect_file_path_info(pid):
                             # print(parts[0])
                             ost_number=int(parts[0].strip())
                         else:
-                            parts = res_parts1[x+1].strip().split("l_ost_idx: ")[1].split(",")
+                            parts = res_parts1[x].strip().split("l_ost_idx: ")[1].split(",")
                             ost_number=int(parts[0].strip())
                         proc = Popen(['ls', '-l', '/proc/fs/lustre/osc'], universal_newlines=True, stdout=PIPE)
                         res = proc.communicate()[0]
