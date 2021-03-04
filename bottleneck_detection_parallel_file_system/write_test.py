@@ -12,7 +12,7 @@ class WriteThread(Thread):
         self.filename = filename
     def run(self):
         while True:
-            proc = Popen(['dd','of=/home/ubuntu/fsx/rcv/'+self.filename, 'if=/dev/zero', 'count=1', 'bs=2G'])
+            proc = Popen(['touch','/home/ubuntu/fsx/rcv/'+self.filename])
             proc.communicate()
             proc2 = Popen(['rm','/home/ubuntu/fsx/rcv/'+self.filename])
             proc2.communicate()
