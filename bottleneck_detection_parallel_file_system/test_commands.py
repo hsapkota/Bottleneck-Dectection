@@ -5,6 +5,7 @@ import subprocess
 import sys, traceback
 import os.path
 from subprocess import check_output
+import bottleneck_pb2
 
 src_ip = ""
 dst_ip = "134.197.113.71"
@@ -386,7 +387,7 @@ def collect_stat():
                         # if(epoc_count==10):
                         if(epoc_count%10==0):
                             if(epoc_count%100==0):
-                                print("tarnsfering file.... ",epoc_count)
+                                print("transferring file.... ",epoc_count)
                                 epoc_count = 0
                             write_thread =fileWriteThread(main_output_string, label_value)
                             write_thread.start()

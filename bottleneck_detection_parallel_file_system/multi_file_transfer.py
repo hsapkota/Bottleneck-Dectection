@@ -16,17 +16,18 @@ import collections
 import math
 import gc
 
-src_ip = ""
-dst_ip = "172.31.31.200"
+src_ip = "172.31.28.232"
+dst_ip = "172.31.16.143"
 port_number = "50505"
 time_length = 3600  #one hour data
 drive_name = "sdq"
+log_folder = "./logs/"
 
 label_value = int(sys.argv[1])
 # src_path="/data/masud/STransfer1/to/"
 # dst_path = "/data/masud/STransfer/received_files/"
-src_path="/fsx/files/"
-dst_path = "/home/cc/received_files/"
+src_path="/home/ubuntu/fsx/send/"
+dst_path = "/home/ubuntu/fsx/rcv/"
 start_time_global = time.time()
 should_run = True
 
@@ -77,11 +78,16 @@ def collect_file_path_info(pid):
                 res1 = proc.communicate()[0]
                 res_parts1 = res1.split("\n")
                 for x in range (len(res_parts1)):
-                    if "obdidx" in res_parts1[x]:
-                        parts = res_parts1[x+1].strip().split("\t")
-                        # print(parts)
-                        # print(parts[0])
-                        ost_number=int(parts[0].strip())
+                    if "obdidx" in res_parts1[x] or "l_ost_idx" in res_parts1[x]:
+                        ost_number = 0
+                        if "obdidx" in res_parts1[x]:
+                            parts = res_parts1[x+1].strip().split("\t")
+                            # print(parts)
+                            # print(parts[0])
+                            ost_number=int(parts[0].strip())
+                        else:
+                            parts = res_parts1[x+1].strip().split("l_ost_idx: ")[1].split(",")
+                            ost_number=int(parts[0].strip())
                         proc = Popen(['ls', '-l', '/proc/fs/lustre/osc'], universal_newlines=True, stdout=PIPE)
                         res = proc.communicate()[0]
                         parts = res.split("\n")
@@ -538,7 +544,7 @@ class fileWriteThread(threading.Thread):
 
     def run(self):
     
-        output_file = open("dataset_"+str(self.process_id)+".csv","a+")
+        output_file = open(log_folder + "/dataset_"+str(self.process_id)+".csv","a+")
         output_file.write(str(self.metric_string))
         output_file.flush()
         output_file.close()

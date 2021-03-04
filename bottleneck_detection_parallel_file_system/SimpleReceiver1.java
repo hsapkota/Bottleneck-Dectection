@@ -15,7 +15,7 @@ public class SimpleReceiver1 extends Thread{
 
     private ServerSocket ss;
     static AtomicBoolean allTransfersCompleted = new AtomicBoolean(false);
-    static String baseDir = "/home/cc/received_files/";
+    static String baseDir = "/data/hem/";
 
     static long totalTransferredBytes = 0L;
     static long totalChecksumBytes = 0L;
