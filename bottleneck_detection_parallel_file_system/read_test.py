@@ -6,7 +6,7 @@ import sys, traceback
 import glob
 
 BUFFER_SIZE = 1024
-src_path="/fsx/files/"
+src_path="/home/ubuntu/fsx/send/"
 
 class ReadThread(Thread):
 
@@ -32,7 +32,7 @@ thread_number = int(sys.argv[1])
 start_time = time.time()
 threads = []
 for x in range(thread_number):
-    newthread = ReadThread(str(x%5))
+    newthread = ReadThread(str(x%18))
     newthread.start()
     threads.append(newthread)
 

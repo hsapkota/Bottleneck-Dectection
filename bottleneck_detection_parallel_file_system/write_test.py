@@ -12,9 +12,9 @@ class WriteThread(Thread):
         self.filename = filename
     def run(self):
         while True:
-            proc = Popen(['touch','/fsx/received_files/'+self.filename+"/"+self.filename])
+            proc = Popen(['touch','/home/ubuntu/fsx/rcv/'+self.filename])
             proc.communicate()
-            proc2 = Popen(['rm','/fsx/received_files/'+self.filename+"/"+self.filename])
+            proc2 = Popen(['rm','/home/ubuntu/fsx/rcv/'+self.filename])
             proc2.communicate()
 
 
@@ -22,7 +22,7 @@ thread_number = int(sys.argv[1])
 start_time = time.time()
 threads = []
 for x in range(thread_number):
-    newthread = WriteThread(str(x%6))
+    newthread = WriteThread(str(50 + (x%thread_number)))
     newthread.start()
     threads.append(newthread)
 
